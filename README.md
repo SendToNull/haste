@@ -1,1 +1,2 @@
 # haste
+# github.io
