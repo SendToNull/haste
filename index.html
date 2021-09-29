@@ -1,88 +1,88 @@
 <html>
-	<head>
-		<title>Spellhastecap Calculator</title>
-		<script type="text/javascript">
-		function calculate() {
-			var castingtime = document.getElementById("castingtime").value;
-		var casting_speed = 1;
-		var haste_rating_buffs = 0;
-			if(document.hastecapform.heroism.checked == true) {
-				casting_speed *= 1.3;
-			}
-			if(document.hastecapform.icyveins.checked == true) {
-				casting_speed *= 1.2;
-			}
-			if(document.hastecapform.powerinfusion.checked == true) {
-				casting_speed *= 1.2;
-			}
-			if(document.hastecapform.berserker.checked == true) {
-				casting_speed *= 1.2;
-			}
-			if(document.hastecapform.mqg.checked == true) {
-				haste_rating_buffs += 330;
-			}
-			if(document.hastecapform.tsog.checked == true) {
-				haste_rating_buffs += 175;
-			}
-			var haste_rating_buffs_percent = haste_rating_buffs / 15.77 / 100;
-			var haste_rating_total = eval(haste_rating_buffs);
-			var haste_rating_total_percent = haste_rating_total / 15.77 / 100;
-			var casting_speed_haste_rating = 1 + haste_rating_total_percent;
-			var casting_speed_total = casting_speed * casting_speed_haste_rating;
-			var gcd = 1.5 / (casting_speed * casting_speed_haste_rating);
-			// Cap
-			var haste_cap_gear_percent = (castingtime / casting_speed - haste_rating_buffs_percent) * 100 - 100;
-			document.hastecapform.gear_percent_total.value = round(castingtime * 100 - 100) + "%";
-			// Current
-			document.hastecapform.gear_percent_current_total.value = round((casting_speed * casting_speed_haste_rating - 1) * 100) + "%";
-			document.hastecapform.castingtime_current.value = round(castingtime / casting_speed_total) + "s";
-			document.hastecapform.gcd_current.value = round(Math.max(1, gcd)) + "s";
-		}
-		function round(number) {
-			return Math.round(number * 1000) / 1000;
-		}
-		</script>
-	</head>
-	<body onload="calculate();document.hastecapform.gear_rating_current.focus();">
-		<form method="get" name="hastecapform">
-			Cast Time (in seconds)
-			<br />
-			<input value="1.5" type="number" name="castingtime" id="castingtime" oninput="calculate()">
-			<br />
-			<br />Haste Buffs
-			<br /><input type="checkbox" name="heroism" onclick="calculate()" value="1"> Heroism / Bloodlust (30%)
-			<br /><input type="checkbox" name="icyveins" onclick="calculate()" value="1"> Icy Veins (20%)
-			<br /><input type="checkbox" name="powerinfusion" onclick="calculate()" value="1"> Power Infusion (20%)</small>
-			<br /><input type="checkbox" name="berserker" onclick="calculate()" value="1"> Berserker (20%)
-			<br />
-			<br />Haste Rating Buffs
-			<br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Hasterating)
-			<br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Hasterating)
-			<br />
-			<br />
-			<table border="0">
-				<tr>
-					<td></td>
-					<td style="font-weight: bold;">The Cap</td>
-					<td>You</td>
-				</tr>
-				<tr>
-					<td>Haste</td>
-					<td><input name="gear_percent_total" size="10" style="font-weight: bold;" type="text" disabled></td>
-					<td><input name="gear_percent_current_total" size="10" type="text" disabled></td>
-				</tr>
-				<tr>
-					<td>Castingtime</td>
-					<td><input size="10" style="font-weight: bold;" type="text" disabled value="1s"></td>
-					<td><input name="castingtime_current" size="10" type="text" disabled></td>
-				</tr>
-				<tr>
-					<td>GCD</td>
-					<td><input size="10" style="font-weight: bold;" type="text" disabled value="1s"></td>
-					<td><input name="gcd_current" size="10" type="text" disabled></td>
-				</tr>
-				<tr>
-				</table>
-			</form>
-		</body>
-	</html>
+    <head>
+        <title>Spell Haste Calculator</title>
+        <script type="text/javascript">
+        function calculate() {
+            var castingtime = document.getElementById("castingtime").value;
+        var casting_speed = 1;
+        var haste_rating_buffs = 0;
+            if(document.hastecapform.heroism.checked == true) {
+                casting_speed *= 1.3;
+            }
+            if(document.hastecapform.icyveins.checked == true) {
+                casting_speed *= 1.2;
+            }
+            if(document.hastecapform.powerinfusion.checked == true) {
+                casting_speed *= 1.2;
+            }
+            if(document.hastecapform.berserker.checked == true) {
+                casting_speed *= 1.2;
+            }
+            if(document.hastecapform.mqg.checked == true) {
+                haste_rating_buffs += 330;
+            }
+            if(document.hastecapform.tsog.checked == true) {
+                haste_rating_buffs += 175;
+            }
+            var haste_rating_buffs_percent = haste_rating_buffs / 15.77 / 100;
+            var haste_rating_total = eval(haste_rating_buffs);
+            var haste_rating_total_percent = haste_rating_total / 15.77 / 100;
+            var casting_speed_haste_rating = 1 + haste_rating_total_percent;
+            var casting_speed_total = casting_speed * casting_speed_haste_rating;
+            var gcd = 1.5 / (casting_speed * casting_speed_haste_rating);
+            // Cap
+            var haste_cap_gear_percent = (castingtime / casting_speed - haste_rating_buffs_percent) * 100 - 100;
+            document.hastecapform.gear_percent_total.value = round(castingtime * 100 - 100) + "%";
+            // Current
+            document.hastecapform.gear_percent_current_total.value = round((casting_speed * casting_speed_haste_rating - 1) * 100) + "%";
+            document.hastecapform.castingtime_current.value = round(castingtime / casting_speed_total) + "s";
+            document.hastecapform.gcd_current.value = round(Math.max(1, gcd)) + "s";
+        }
+        function round(number) {
+            return Math.round(number * 1000) / 1000;
+        }
+        </script>
+    </head>
+    <body onload="calculate();document.hastecapform.gear_rating_current.focus();">
+        <form method="get" name="hastecapform">
+            Cast Time (in seconds)
+            <br />
+            <input value="1.5" type="number" name="castingtime" id="castingtime" oninput="calculate()">
+            <br />
+            <br />Haste Buffs
+            <br /><input type="checkbox" name="heroism" onclick="calculate()" value="1"> Heroism / Bloodlust (30%)
+            <br /><input type="checkbox" name="icyveins" onclick="calculate()" value="1"> Icy Veins (20%)
+            <br /><input type="checkbox" name="powerinfusion" onclick="calculate()" value="1"> Power Infusion (20%)</small>
+            <br /><input type="checkbox" name="berserker" onclick="calculate()" value="1"> Berserker (20%)
+            <br />
+            <br />Haste Rating Buffs
+            <br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Spellhaste)
+            <br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Spellhaste)
+            <br />
+            <br />
+            <table border="0">
+                <tr>
+                    <td></td>
+                    <td style="font-weight: bold;">The Cap</td>
+                    <td>You</td>
+                </tr>
+                <tr>
+                    <td>Haste</td>
+                    <td><input name="gear_percent_total" size="10" style="font-weight: bold;" type="text" disabled></td>
+                    <td><input name="gear_percent_current_total" size="10" type="text" disabled></td>
+                </tr>
+                <tr>
+                    <td>Cast Time</td>
+                    <td><input size="10" style="font-weight: bold;" type="text" disabled value="1s"></td>
+                    <td><input name="castingtime_current" size="10" type="text" disabled></td>
+                </tr>
+                <tr>
+                    <td>GCD</td>
+                    <td><input size="10" style="font-weight: bold;" type="text" disabled value="1s"></td>
+                    <td><input name="gcd_current" size="10" type="text" disabled></td>
+                </tr>
+                <tr>
+                </table>
+            </form>
+        </body>
+    </html>
