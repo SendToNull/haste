@@ -34,7 +34,7 @@ function calculate() {
   	}
 
 	var haste_rating_buffs_percent = haste_rating_buffs / 15.77 / 100;
-	var haste_rating_total = eval(haste_rating_buffs) + eval(document.hastecapform.gear_rating_current.value);
+	var haste_rating_total = eval(haste_rating_buffs);
 	var haste_rating_total_percent = haste_rating_total / 15.77 / 100;
 	var casting_speed_haste_rating = 1 + haste_rating_total_percent;
 	var casting_speed_total = casting_speed * casting_speed_haste_rating;
@@ -42,12 +42,9 @@ function calculate() {
 
 	// Cap
 	var haste_cap_gear_percent = (castingtime / casting_speed - haste_rating_buffs_percent) * 100 - 100;
-	document.hastecapform.gear_percent.value = round(haste_cap_gear_percent) + "%";
 	document.hastecapform.gear_percent_total.value = round(castingtime * 100 - 100) + "%";
-	document.hastecapform.gear_rating.value = round(haste_cap_gear_percent * 15.77);
 
 	// Current
-	document.hastecapform.gear_percent_current.value = round(document.hastecapform.gear_rating_current.value / 15.77) + "%";
 	document.hastecapform.gear_percent_current_total.value = round((casting_speed * casting_speed_haste_rating - 1) * 100) + "%";
 	document.hastecapform.castingtime_current.value = round(castingtime / casting_speed_total) + "s";
 	document.hastecapform.gcd_current.value = round(Math.max(1, gcd)) + "s";
@@ -109,18 +106,6 @@ Spell
 </tr>
 
 <tr>
-
-<td>Gear %</td>
-<td><input name="gear_percent" size="10" style="font-weight: bold;" type="text" disabled></td>
-<td><input name="gear_percent_current" size="10" type="text" disabled></td>
-</tr>
-
-<tr>
-<td>Gear Rating</td>
-<td><input name="gear_rating" size="10" style="font-weight: bold;" type="text" disabled value="0"></td>
-<td><input name="gear_rating_current" onchange="calculate()" onkeydown="calculate()" onkeypress="calculate()" onkeyup="calculate()" size="10" type="text" value="0"></td>
-<td><-- insert your haste rating here</td>
-</tr>
 
 </table>
 </form>
