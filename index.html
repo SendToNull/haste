@@ -24,6 +24,9 @@
             if(document.hastecapform.tsog.checked == true) {
                 haste_rating_buffs += 175;
             }
+            if(document.hastecapform.drums.checked == true) {
+                haste_rating_buffs += 80;
+            }
             var haste_rating_buffs_percent = haste_rating_buffs / 15.77 / 100;
             var haste_rating_total = eval(haste_rating_buffs);
             var haste_rating_total_percent = haste_rating_total / 15.77 / 100;
@@ -58,6 +61,7 @@
             <br />Haste Rating Buffs
             <br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Spellhaste)
             <br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Spellhaste)
+            <br /><input type="checkbox" name="drums" onclick="calculate()" value="1"> Drums Of Battle (80 Spellhaste)
             <br />
             <br />
             <table border="0">
