@@ -21,8 +21,14 @@
             if(document.hastecapform.mqg.checked == true) {
                 haste_rating_buffs += 330;
             }
+            if(document.hastecapform.quag.checked == true) {
+                haste_rating_buffs += 320;
+            }
             if(document.hastecapform.tsog.checked == true) {
                 haste_rating_buffs += 175;
+            }
+            if(document.hastecapform.ash.checked == true) {
+                haste_rating_buffs += 145;
             }
             if(document.hastecapform.drums.checked == true) {
                 haste_rating_buffs += 80;
@@ -78,7 +84,9 @@
             <br />
             <br />Haste Rating Buffs
             <br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Spellhaste)
+            <br /><input type="checkbox" name="quag" onclick="calculate()" value="1"> Quagmirran's Eye (320 Spellhaste)
             <br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Spellhaste)
+            <br /><input type="checkbox" name="ash" onclick="calculate()" value="1"> Ashtongue Talisman of Insight (145 Spellhaste)
             <br /><input type="checkbox" name="drums" onclick="calculate()" value="1"> Drums Of Battle (80 Spellhaste)
             <br /><input type="checkbox" name="shroud" onclick="calculate()" value="1"> Shroud of the Highborne (32 Spellhaste)
             <br /><input type="checkbox" name="nimble" onclick="calculate()" value="1"> Bracers of Nimble Thought (28 Spellhaste)
