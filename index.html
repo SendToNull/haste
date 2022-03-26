@@ -4,8 +4,8 @@
         <script type="text/javascript">
         function calculate() {
             var castingtime = document.getElementById("castingtime").value;
-        var casting_speed = 1;
-        var haste_rating_buffs = 0;
+            var casting_speed = 1;
+            var haste_rating_buffs = 0;
             if(document.hastecapform.heroism.checked == true) {
                 casting_speed *= 1.3;
             }
@@ -54,6 +54,30 @@
             if(document.hastecapform.waist.checked == true) {
                 haste_rating_buffs += 32;
             }
+            if(document.hastecapform.bont.checked == true) {
+                haste_rating_buffs += 28;
+            }
+            if(document.hastecapform.brooch.checked == true) {
+                haste_rating_buffs += 33;
+            }
+            if(document.hastecapform.foot.checked == true) {
+                haste_rating_buffs += 25;
+            }
+            if(document.hastecapform.loop.checked == true) {
+                haste_rating_buffs += 27;
+            }
+            if(document.hastecapform.mab.checked == true) {
+                haste_rating_buffs += 29;
+            }
+            if(document.hastecapform.pant.checked == true) {
+                haste_rating_buffs += 45;
+            }
+            if(document.hastecapform.robe.checked == true) {
+                haste_rating_buffs += 35;
+            }
+            if(document.hastecapform.drape.checked == true) {
+                haste_rating_buffs += 25;
+            }
             var haste_rating_buffs_percent = haste_rating_buffs / 15.77 / 100;
             var haste_rating_total = eval(haste_rating_buffs);
             var haste_rating_total_percent = haste_rating_total / 15.77 / 100;
@@ -87,13 +111,20 @@
             <br />
             <br />Haste Rating Buffs
             <br /><input type="checkbox" name="ash" onclick="calculate()" value="1"> Ashtongue Talisman of Insight (145 Spellhaste)
-            <br /><input type="checkbox" name="drums" onclick="calculate()" value="1"> Drums Of Battle (80 Spellhaste)
-            <br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Spellhaste)
             <br /><input type="checkbox" name="bont" onclick="calculate()" value="1"> Bracers of Nimble Thought (28 Spellhaste)
+            <br /><input type="checkbox" name="brooch" onclick="calculate()" value="1"> Brooch of Nature's Mercy (33 Spellhaste)
+            <br /><input type="checkbox" name="drums" onclick="calculate()" value="1"> Drums Of Battle (80 Spellhaste)
+            <br /><input type="checkbox" name="foot" onclick="calculate()" value="1"> Footpads of Madness (25 Spellhaste)
+            <br /><input type="checkbox" name="loop" onclick="calculate()" value="1"> Loop of Cursed Bones (27 Spellhaste)
+            <br /><input type="checkbox" name="mab" onclick="calculate()" value="1"> Mana Attuned Band (29 Spellhaste)
             <br /><input type="checkbox" name="mont" onclick="calculate()" value="1"> Mantle of Nimble Thought (38 Spellhaste)
+            <br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Spellhaste)
+            <br /><input type="checkbox" name="pant" onclick="calculate()" value="1"> Pantaloons of Arcane Annihilation (45 Spellhaste)
             <br /><input type="checkbox" name="quag" onclick="calculate()" value="1"> Quagmirran's Eye (320 Spellhaste)
             <br /><input type="checkbox" name="roa1" onclick="calculate()" value="1"> Ring of Ancient Knowledge #1 (31 Spellhaste)
             <br /><input type="checkbox" name="roa2" onclick="calculate()" value="1"> Ring of Ancient Knowledge #2 (31 Spellhaste)
+            <br /><input type="checkbox" name="robe" onclick="calculate()" value="1"> Robe of Depared Spirits (35 Spellhaste)
+            <br /><input type="checkbox" name="drape" onclick="calculate()" value="1"> Shadowcaster's Drape (25 Spellhaste)
             <br /><input type="checkbox" name="shroud" onclick="calculate()" value="1"> Shroud of the Highborne (32 Spellhaste)
             <br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Spellhaste)
             <br /><input type="checkbox" name="waist" onclick="calculate()" value="1"> Waistwrap of Infinity (32 Spellhaste)
