@@ -54,7 +54,6 @@
             if(document.hastecapform.waist.checked == true) {
                 haste_rating_buffs += 32;
             }
-
             if(document.hastecapform.brooch.checked == true) {
                 haste_rating_buffs += 33;
             }
@@ -75,6 +74,24 @@
             }
             if(document.hastecapform.drape.checked == true) {
                 haste_rating_buffs += 25;
+            }
+            if(document.hastecapform.tierbelt.checked == true) {
+                haste_rating_buffs += 29;
+            }
+            if(document.hastecapform.tierboots.checked == true) {
+                haste_rating_buffs += 25;
+            }
+            if(document.hastecapform.tierbracers.checked == true) {
+                haste_rating_buffs += 26;
+            }
+            if(document.hastecapform.omnipotence.checked == true) {
+                haste_rating_buffs += 31;
+            }
+            if(document.hastecapform.sunflare.checked == true) {
+                haste_rating_buffs += 23;
+            }
+            if(document.hastecapform.heart.checked == true) {
+                haste_rating_buffs += 32;
             }
             var haste_rating_buffs_percent = haste_rating_buffs / 15.77 / 100;
             var haste_rating_total = eval(haste_rating_buffs);
@@ -127,6 +144,12 @@
             <br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Spellhaste)
             <br /><input type="checkbox" name="waist" onclick="calculate()" value="1"> Waistwrap of Infinity (32 Spellhaste)
             <br /><input type="checkbox" name="zdgd" onclick="calculate()" value="1"> Zhar'doom, Greatstaff of the Devourer (55 Spellhaste)
+            <br /><input type="checkbox" name="tierbelt" onclick="calculate()" value="1"> Belt of the Tempest (29 Spellhaste)
+            <br /><input type="checkbox" name="tierboots" onclick="calculate()" value="1"> Boots of the Tempest (25 Spellhaste)
+            <br /><input type="checkbox" name="tierbracers" onclick="calculate()" value="1"> Bracers of the Tempest (26 Spellhaste)
+            <br /><input type="checkbox" name="omnipotence" onclick="calculate()" value="1"> Ring of Omnipotence (31 Spellhaste)
+            <br /><input type="checkbox" name="sunflare" onclick="calculate()" value="1"> Sunflare (23 Spellhaste)
+            <br /><input type="checkbox" name="sunflare" onclick="calculate()" value="1"> Heart of the Pit (32 Spellhaste)
             <br />
             <br />
             <table border="0">
