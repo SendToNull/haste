@@ -1,137 +1,25 @@
 <html>
     <head>
-        <title>Spell Haste Calculator</title>
-        <script type="text/javascript">
-        function calculate() {
-            var castingtime = document.getElementById("castingtime").value;
-            var casting_speed = 1;
-            var haste_rating_buffs = 0;
-            if(document.hastecapform.heroism.checked == true) {
-                casting_speed *= 1.3;
-            }
-            if(document.hastecapform.icyveins.checked == true) {
-                casting_speed *= 1.2;
-            }
-            if(document.hastecapform.powerinfusion.checked == true) {
-                casting_speed *= 1.2;
-            }
-            if(document.hastecapform.berserker.checked == true) {
-                casting_speed *= 1.2;
-            }
-            if(document.hastecapform.mqg.checked == true) {
-                haste_rating_buffs += 330;
-            }
-            if(document.hastecapform.quag.checked == true) {
-                haste_rating_buffs += 320;
-            }
-            if(document.hastecapform.tsog.checked == true) {
-                haste_rating_buffs += 175;
-            }
-            if(document.hastecapform.ash.checked == true) {
-                haste_rating_buffs += 145;
-            }
-            if(document.hastecapform.drums.checked == true) {
-                haste_rating_buffs += 80;
-            }
-            if(document.hastecapform.shroud.checked == true) {
-                haste_rating_buffs += 32;
-            }
-            if(document.hastecapform.bont.checked == true) {
-                haste_rating_buffs += 28;
-            }
-            if(document.hastecapform.mont.checked == true) {
-                haste_rating_buffs += 38;
-            }
-            if(document.hastecapform.roa1.checked == true) {
-                haste_rating_buffs += 31;
-            }
-            if(document.hastecapform.roa2.checked == true) {
-                haste_rating_buffs += 31;
-            }
-            if(document.hastecapform.zdgd.checked == true) {
-                haste_rating_buffs += 55;
-            }
-            if(document.hastecapform.waist.checked == true) {
-                haste_rating_buffs += 32;
-            }
-            if(document.hastecapform.brooch.checked == true) {
-                haste_rating_buffs += 33;
-            }
-            if(document.hastecapform.foot.checked == true) {
-                haste_rating_buffs += 25;
-            }
-            if(document.hastecapform.loop.checked == true) {
-                haste_rating_buffs += 27;
-            }
-            if(document.hastecapform.mab.checked == true) {
-                haste_rating_buffs += 29;
-            }
-            if(document.hastecapform.pant.checked == true) {
-                haste_rating_buffs += 45;
-            }
-            if(document.hastecapform.robe.checked == true) {
-                haste_rating_buffs += 35;
-            }
-            if(document.hastecapform.drape.checked == true) {
-                haste_rating_buffs += 25;
-            }
-            if(document.hastecapform.tierbelt.checked == true) {
-                haste_rating_buffs += 29;
-            }
-            if(document.hastecapform.tierboots.checked == true) {
-                haste_rating_buffs += 25;
-            }
-            if(document.hastecapform.tierbracers.checked == true) {
-                haste_rating_buffs += 26;
-            }
-            if(document.hastecapform.omnipotence.checked == true) {
-                haste_rating_buffs += 31;
-            }
-            if(document.hastecapform.sunflare.checked == true) {
-                haste_rating_buffs += 23;
-            }
-            if(document.hastecapform.heart.checked == true) {
-                haste_rating_buffs += 32;
-            }
-            var haste_rating_buffs_percent = haste_rating_buffs / 15.77 / 100;
-            var haste_rating_total = eval(haste_rating_buffs);
-            var haste_rating_total_percent = haste_rating_total / 15.77 / 100;
-            var casting_speed_haste_rating = 1 + haste_rating_total_percent;
-            var casting_speed_total = casting_speed * casting_speed_haste_rating;
-            var gcd = 1.5 / (casting_speed * casting_speed_haste_rating);
-            // Cap
-            var haste_cap_gear_percent = (castingtime / casting_speed - haste_rating_buffs_percent) * 100 - 100;
-            document.hastecapform.gear_percent_total.value = round(castingtime * 100 - 100) + "%";
-            // Current
-            document.hastecapform.gear_percent_current_total.value = round((casting_speed * casting_speed_haste_rating - 1) * 100) + "%";
-            document.hastecapform.castingtime_current.value = round(castingtime / casting_speed_total) + "s";
-            document.hastecapform.gcd_current.value = round(Math.max(1, gcd)) + "s";
-        }
-        function round(number) {
-            return Math.round(number * 1000) / 1000;
-        }
-        </script>
+        <h1>Spell Haste Calculator</h1>
+        <script src="calculate.js"></script>
     </head>
     <body onload="calculate();document.hastecapform.gear_rating_current.focus();">
         <form method="get" name="hastecapform">
             Cast Time (in seconds)
             <br />
             <input value="1.5" type="number" name="castingtime" id="castingtime" oninput="calculate()">
-            <br />
-            <br /><b>Haste Buffs</b>
-            <br /><input type="checkbox" name="heroism" onclick="calculate()" value="1"> Heroism / Bloodlust (30%)
+            <br /><h2>Haste Buffs</h2>
+            <input type="checkbox" name="heroism" onclick="calculate()" value="1"> Heroism / Bloodlust (30%)
             <br /><input type="checkbox" name="icyveins" onclick="calculate()" value="1"> Icy Veins (20%)
             <br /><input type="checkbox" name="powerinfusion" onclick="calculate()" value="1"> Power Infusion (20%)</small>
             <br /><input type="checkbox" name="berserker" onclick="calculate()" value="1"> Berserker (20%)
-            <br />
-            <br /><b>Haste Rating Buffs</b>
-            <br />Weapons
-            <br /><input type="checkbox" name="zdgd" onclick="calculate()" value="1"> Zhar'doom, Greatstaff of the Devourer (55 Spellhaste)
+            <h2>Haste Rating Buffs</h2>
+            <h3>Weapons</h3>
+            <input type="checkbox" name="zdgd" onclick="calculate()" value="1"> Zhar'doom, Greatstaff of the Devourer (55 Spellhaste)
             <br /><input type="checkbox" name="sunflare" onclick="calculate()" value="1"> Sunflare (23 Spellhaste)
             <br /><input type="checkbox" name="heart" onclick="calculate()" value="1"> Heart of the Pit (32 Spellhaste)
-            <br />
-            <br />Armor
-            <br /><input type="checkbox" name="bont" onclick="calculate()" value="1"> Bracers of Nimble Thought (28 Spellhaste)
+            <h3>Armor</h3>
+            <input type="checkbox" name="bont" onclick="calculate()" value="1"> Bracers of Nimble Thought (28 Spellhaste)
             <br /><input type="checkbox" name="brooch" onclick="calculate()" value="1"> Brooch of Nature's Mercy (33 Spellhaste)
             <br /><input type="checkbox" name="foot" onclick="calculate()" value="1"> Footpads of Madness (25 Spellhaste)
             <br /><input type="checkbox" name="loop" onclick="calculate()" value="1"> Loop of Cursed Bones (27 Spellhaste)
@@ -148,18 +36,15 @@
             <br /><input type="checkbox" name="tierboots" onclick="calculate()" value="1"> Boots of the Tempest (25 Spellhaste)
             <br /><input type="checkbox" name="tierbracers" onclick="calculate()" value="1"> Bracers of the Tempest (26 Spellhaste)
             <br /><input type="checkbox" name="omnipotence" onclick="calculate()" value="1"> Ring of Omnipotence (31 Spellhaste)
-            <br />
-            <br />Trinkets
-            <br /><input type="checkbox" name="ash" onclick="calculate()" value="1"> Ashtongue Talisman of Insight (145 Spellhaste)
+            <h3>Trinkets</h3>
+            <input type="checkbox" name="ash" onclick="calculate()" value="1"> Ashtongue Talisman of Insight (145 Spellhaste)
             <br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Spellhaste)
             <br /><input type="checkbox" name="quag" onclick="calculate()" value="1"> Quagmirran's Eye (320 Spellhaste)
             <br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Spellhaste)
-            <br />
-            <br />Misc
-            <br /><input type="checkbox" name="drums" onclick="calculate()" value="1"> Drums Of Battle (80 Spellhaste)
+            <h3>Misc</h3><input type="checkbox" name="drums" onclick="calculate()" value="1"> Drums Of Battle (80 Spellhaste)
             <br />
             <br />
-            <table border="0">
+            <table border="1">
                 <tr>
                     <td></td>
                     <td style="font-weight: bold;">The Cap</td>
