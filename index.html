@@ -1,72 +1,96 @@
-<html>
-    <head>
-        <h1>Spell Haste Calculator</h1>
-        <script src="calculate.js"></script>
-    </head>
-    <body onload="calculate();document.hastecapform.gear_rating_current.focus();">
-        <form method="get" name="hastecapform">
-            Cast Time (in seconds)
-            <br />
-            <input value="1.5" type="number" name="castingtime" id="castingtime" oninput="calculate()">
-            <br /><h2>Haste Buffs</h2>
-            <input type="checkbox" name="heroism" onclick="calculate()" value="1"> Heroism / Bloodlust (30%)
-            <br /><input type="checkbox" name="icyveins" onclick="calculate()" value="1"> Icy Veins (20%)
-            <br /><input type="checkbox" name="powerinfusion" onclick="calculate()" value="1"> Power Infusion (20%)</small>
-            <br /><input type="checkbox" name="berserker" onclick="calculate()" value="1"> Berserker (20%)
-            <h2>Haste Rating Buffs</h2>
-            <h3>Weapons</h3>
-            <input type="checkbox" name="zdgd" onclick="calculate()" value="1"> Zhar'doom, Greatstaff of the Devourer (55 Spellhaste)
-            <br /><input type="checkbox" name="sunflare" onclick="calculate()" value="1"> Sunflare (23 Spellhaste)
-            <br /><input type="checkbox" name="heart" onclick="calculate()" value="1"> Heart of the Pit (32 Spellhaste)
-            <h3>Armor</h3>
-            <input type="checkbox" name="bont" onclick="calculate()" value="1"> Bracers of Nimble Thought (28 Spellhaste)
-            <br /><input type="checkbox" name="brooch" onclick="calculate()" value="1"> Brooch of Nature's Mercy (33 Spellhaste)
-            <br /><input type="checkbox" name="foot" onclick="calculate()" value="1"> Footpads of Madness (25 Spellhaste)
-            <br /><input type="checkbox" name="loop" onclick="calculate()" value="1"> Loop of Cursed Bones (27 Spellhaste)
-            <br /><input type="checkbox" name="mab" onclick="calculate()" value="1"> Mana Attuned Band (29 Spellhaste)
-            <br /><input type="checkbox" name="mont" onclick="calculate()" value="1"> Mantle of Nimble Thought (38 Spellhaste)
-            <br /><input type="checkbox" name="pant" onclick="calculate()" value="1"> Pantaloons of Arcane Annihilation (45 Spellhaste)
-            <br /><input type="checkbox" name="roa1" onclick="calculate()" value="1"> Ring of Ancient Knowledge #1 (31 Spellhaste)
-            <br /><input type="checkbox" name="roa2" onclick="calculate()" value="1"> Ring of Ancient Knowledge #2 (31 Spellhaste)
-            <br /><input type="checkbox" name="robe" onclick="calculate()" value="1"> Robe of Depared Spirits (35 Spellhaste)
-            <br /><input type="checkbox" name="drape" onclick="calculate()" value="1"> Shadowcaster's Drape (25 Spellhaste)
-            <br /><input type="checkbox" name="shroud" onclick="calculate()" value="1"> Shroud of the Highborne (32 Spellhaste)
-            <br /><input type="checkbox" name="waist" onclick="calculate()" value="1"> Waistwrap of Infinity (32 Spellhaste)
-            <br /><input type="checkbox" name="tierbelt" onclick="calculate()" value="1"> Belt of the Tempest (29 Spellhaste)
-            <br /><input type="checkbox" name="tierboots" onclick="calculate()" value="1"> Boots of the Tempest (25 Spellhaste)
-            <br /><input type="checkbox" name="tierbracers" onclick="calculate()" value="1"> Bracers of the Tempest (26 Spellhaste)
-            <br /><input type="checkbox" name="omnipotence" onclick="calculate()" value="1"> Ring of Omnipotence (31 Spellhaste)
-            <h3>Trinkets</h3>
-            <input type="checkbox" name="ash" onclick="calculate()" value="1"> Ashtongue Talisman of Insight (145 Spellhaste)
-            <br /><input type="checkbox" name="mqg" onclick="calculate()" value="1"> Mind Quickening Gem (330 Spellhaste)
-            <br /><input type="checkbox" name="quag" onclick="calculate()" value="1"> Quagmirran's Eye (320 Spellhaste)
-            <br /><input type="checkbox" name="tsog" onclick="calculate()" value="1"> The Skull of Guldan (175 Spellhaste)
-            <h3>Misc</h3><input type="checkbox" name="drums" onclick="calculate()" value="1"> Drums Of Battle (80 Spellhaste)
-            <br />
-            <br />
-            <table border="1">
-                <tr>
-                    <td></td>
-                    <td style="font-weight: bold;">The Cap</td>
-                    <td>You</td>
-                </tr>
-                <tr>
-                    <td>Haste</td>
-                    <td><input name="gear_percent_total" size="10" style="font-weight: bold;" type="text" disabled></td>
-                    <td><input name="gear_percent_current_total" size="10" type="text" disabled></td>
-                </tr>
-                <tr>
-                    <td>Cast Time</td>
-                    <td><input size="10" style="font-weight: bold;" type="text" disabled value="0.96s"></td>
-                    <td><input name="castingtime_current" size="10" type="text" disabled></td>
-                </tr>
-                <tr>
-                    <td>GCD</td>
-                    <td><input size="10" style="font-weight: bold;" type="text" disabled value="1s"></td>
-                    <td><input name="gcd_current" size="10" type="text" disabled></td>
-                </tr>
-                <tr>
-                </table>
-            </form>
-        </body>
-    </html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TBC Spell Haste Calculator</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="theme-switch-container">
+            <label for="theme-select" style="color: var(--text-secondary); font-size: 0.9rem;">Theme:</label>
+            <select id="theme-select" style="padding: 0.25rem; width: auto; font-size: 0.9rem;">
+                <option value="default">Arcane (Default)</option>
+                <option value="nord">Nordic Frost</option>
+                <option value="cyberpunk">Cyberpunk</option>
+                <option value="classic">Classic Blue</option>
+            </select>
+        </div>
+        <header>
+            <h1>TBC Arcane Haste Calculator</h1>
+        </header>
+
+        <main class="calculator-grid">
+            <div class="controls-section" id="configuration-container">
+                <!-- Javascript will inject controls here -->
+            </div>
+
+            <div class="results-section">
+                <div class="card stats-card">
+                    <h2>Results</h2>
+                    
+                    <div class="input-group">
+                        <label for="cast-time-input">Base Cast Time (seconds)</label>
+                        <input type="number" id="cast-time-input" value="1.5" step="0.1" min="0">
+                    </div>
+
+                    <div class="input-group">
+                        <label for="manual-haste-input">Manual Haste Rating</label>
+                        <input type="number" id="manual-haste-input" value="0" min="0" placeholder="Enter haste rating from character sheet">
+                    </div>
+
+                    <div class="stats-columns">
+                        <!-- Column 1: Current Stats -->
+                        <div class="stat-column current">
+                            <h3>Current Stats</h3>
+                            <div class="stat-row">
+                                <span class="label">Cast Time</span>
+                                <span class="value highlight" id="current-cast-time">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="label">In-Game Haste %</span>
+                                <span class="value" id="current-haste-percent">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="label">Haste Rating</span>
+                                <span class="value" id="current-haste-rating">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="label">GCD</span>
+                                <span class="value" id="current-gcd">-</span>
+                            </div>
+                        </div>
+
+                        <!-- Column 2: Target Range -->
+                        <div class="stat-column target-range">
+                            <h3>Target Range (1.0s - 0.96s)</h3>
+                            <div class="stat-row">
+                                <span class="label">Rating Range</span>
+                                <span class="value" id="target-rating-range">-</span>
+                            </div>
+                            <div class="stat-row">
+                                <span class="label">Haste % Range</span>
+                                <span class="value" id="target-percent-range">-</span>
+                            </div>
+                            <div class="stat-row delta">
+                                <span class="label">Haste Needed</span>
+                                <span class="value" id="target-needed">-</span>
+                            </div>
+                            <div class="stat-row" id="buffer-row" style="display: none;">
+                                <span class="label">Safe Margin</span>
+                                <span class="value" id="target-buffer">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <footer>
+                    <p>Designed for TBC Arcane Mages</p>
+                </footer>
+            </div>
+        </main>
+    </div>
+    <script src="calculate.js"></script>
+</body>
+</html>
