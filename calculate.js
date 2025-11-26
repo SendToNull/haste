@@ -250,7 +250,7 @@ function calculateTarget(baseCastTime, targetTime, buffMultiplier) {
     const requiredTotalSpeed = baseCastTime / targetTime;
     const requiredRatingMultiplier = requiredTotalSpeed / buffMultiplier;
     let requiredRatingPercent = requiredRatingMultiplier - 1;
-    if (requiredRatingPercent < 0) requiredRatingPercent = 0;
+    // if (requiredRatingPercent < 0) requiredRatingPercent = 0;
     const requiredRating = requiredRatingPercent * 100 * HASTE_RATING_CONVERSION;
 
     return {
@@ -275,7 +275,7 @@ function updateRangeColumn(targetMin, targetMax, currentRating) {
     const elBuffer = document.getElementById('target-buffer');
     
     // Reset Buffer visibility
-    elBufferRow.style.display = 'none';
+    elBufferRow.style.visibility = 'hidden';
 
     if (currentRating < minRating) {
         // Under the Range
@@ -295,7 +295,7 @@ function updateRangeColumn(targetMin, targetMax, currentRating) {
         elNeeded.style.color = 'var(--preview-good)';
         
         // Show Safe Margin
-        elBufferRow.style.display = 'flex';
+        elBufferRow.style.visibility = 'visible';
         
         const loseRating = Math.floor(currentRating - minRating); // Floor to be safe? Math.ceil(current) - minRating
         // currentRating is float from calc? No, totalHasteRating is sum of ints usually.
@@ -316,8 +316,6 @@ document.addEventListener('DOMContentLoaded', () => {
     
     const castTimeInput = document.getElementById('cast-time-input');
     const manualHasteInput = document.getElementById('manual-haste-input');
-    const themeSelect = document.getElementById('theme-select');
-
     castTimeInput.addEventListener('input', (e) => {
         state.castTime = parseFloat(e.target.value) || 0;
         calculate();
@@ -326,15 +324,6 @@ document.addEventListener('DOMContentLoaded', () => {
     manualHasteInput.addEventListener('input', (e) => {
         state.manualHasteRating = parseInt(e.target.value) || 0;
         calculate();
-    });
-
-    themeSelect.addEventListener('change', (e) => {
-        const theme = e.target.value;
-        if (theme === 'default') {
-            document.documentElement.removeAttribute('data-theme');
-        } else {
-            document.documentElement.setAttribute('data-theme', theme);
-        }
     });
 
     // Initial calculation

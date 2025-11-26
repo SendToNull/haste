@@ -4,19 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TBC Spell Haste Calculator</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <div class="theme-switch-container">
-            <label for="theme-select" style="color: var(--text-secondary); font-size: 0.9rem;">Theme:</label>
-            <select id="theme-select" style="padding: 0.25rem; width: auto; font-size: 0.9rem;">
-                <option value="default">Arcane (Default)</option>
-                <option value="nord">Nordic Frost</option>
-                <option value="cyberpunk">Cyberpunk</option>
-                <option value="classic">Classic Blue</option>
-            </select>
-        </div>
         <header>
             <h1>TBC Arcane Haste Calculator</h1>
         </header>
@@ -77,7 +71,7 @@
                                 <span class="label">Haste Needed</span>
                                 <span class="value" id="target-needed">-</span>
                             </div>
-                            <div class="stat-row" id="buffer-row" style="display: none;">
+                            <div class="stat-row" id="buffer-row" style="visibility: hidden;">
                                 <span class="label">Safe Margin</span>
                                 <span class="value" id="target-buffer">-</span>
                             </div>

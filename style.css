@@ -1,14 +1,15 @@
 :root {
-    /* Default Theme (Arcane/Dracula-inspired) */
-    --bg-color: #282a36;
-    --card-bg: #44475a;
-    --text-primary: #f8f8f2;
-    --text-secondary: #bfbfbf;
-    --accent-color: #6272a4;
-    --highlight-color: #ff79c6;
-    --arcane-glow: #bd93f9;
+    /* Arcane Theme (Default) */
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --text-primary: #e6e6e6;
+    --text-secondary: #b3b3b3;
+    --accent-color: #0f3460;
+    --highlight-color: #e94560;
+    --arcane-glow: #a78bfa;
     --border-radius: 8px;
-    --font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    /* Using Inter from Google Fonts */
+    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     --spacing-md: 1rem;
     --spacing-lg: 2rem;
     
@@ -17,55 +18,6 @@
     --preview-bad: #ff5555;  /* Red */
     --preview-neutral: #8be9fd; /* Cyan */
     --preview-warn: #ffb86c; /* Orange/Yellow */
-}
-
-[data-theme="nord"] {
-    --bg-color: #2e3440;
-    --card-bg: #3b4252;
-    --text-primary: #eceff4;
-    --text-secondary: #d8dee9;
-    --accent-color: #4c566a;
-    --highlight-color: #88c0d0;
-    --arcane-glow: #81a1c1;
-    --font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    
-    --preview-good: #a3be8c;
-    --preview-bad: #bf616a;
-    --preview-neutral: #88c0d0;
-    --preview-warn: #ebcb8b;
-}
-
-[data-theme="cyberpunk"] {
-    --bg-color: #0b0c15; /* Very dark */
-    --card-bg: #121420;
-    --text-primary: #e0e0e0;
-    --text-secondary: #a0a0a0;
-    --accent-color: #23263a;
-    --highlight-color: #00ff9f; /* Neon Green */
-    --arcane-glow: #ff0055; /* Neon Pink */
-    --font-family: 'Courier New', Courier, monospace; /* Tech/Retro feel */
-    
-    --preview-good: #00ff9f;
-    --preview-bad: #ff003c;
-    --preview-neutral: #00b8ff;
-    --preview-warn: #fcee0a;
-}
-
-[data-theme="classic"] {
-    /* The original one we made */
-    --bg-color: #1a1a2e;
-    --card-bg: #16213e;
-    --text-primary: #e6e6e6;
-    --text-secondary: #b3b3b3;
-    --accent-color: #0f3460;
-    --highlight-color: #e94560;
-    --arcane-glow: #a78bfa;
-    --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    
-    --preview-good: #4caf50;
-    --preview-bad: #f44336;
-    --preview-neutral: #2196f3;
-    --preview-warn: #ff9800;
 }
 
 * {
@@ -80,11 +32,12 @@ body {
     color: var(--text-primary);
     line-height: 1.6;
     padding: var(--spacing-lg);
+    /* Smooth transition in case we add themes back later */
     transition: background-color 0.3s, color 0.3s;
 }
 
 .container {
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -97,7 +50,7 @@ h1 {
     color: var(--arcane-glow);
     font-size: 2.5rem;
     margin-bottom: 0.5rem;
-    text-shadow: 0 0 10px rgba(189, 147, 249, 0.2); /* Subtle glow */
+    text-shadow: 0 0 10px rgba(167, 139, 250, 0.3);
 }
 
 .calculator-grid {
@@ -133,6 +86,7 @@ h1 {
     padding-bottom: 0.5rem;
     margin-bottom: 1rem;
     font-size: 1.25rem;
+    font-weight: 600; /* Inter bold weight */
 }
 
 .stats-card {
@@ -153,6 +107,7 @@ h1 {
     display: block;
     margin-bottom: 0.5rem;
     color: var(--text-secondary);
+    font-weight: 500;
 }
 
 input[type="number"], select {
@@ -163,6 +118,7 @@ input[type="number"], select {
     border-radius: var(--border-radius);
     color: var(--text-primary);
     font-size: 1rem;
+    font-family: var(--font-family);
     transition: background-color 0.3s, border-color 0.3s;
 }
 
@@ -195,13 +151,13 @@ input[type="number"]:focus, select:focus {
 .checkbox-wrapper.preview-good {
     background-color: rgba(80, 250, 123, 0.1);
     border-color: var(--preview-good);
-    opacity: 1; /* Ensure full visibility */
+    opacity: 1;
 }
 
 .checkbox-wrapper.preview-bad {
     background-color: rgba(255, 85, 85, 0.1);
     border-color: var(--preview-bad);
-    opacity: 0.5; /* Fade out bad options */
+    opacity: 0.5;
 }
 
 .checkbox-wrapper.preview-neutral {
@@ -216,7 +172,6 @@ input[type="number"]:focus, select:focus {
     cursor: pointer;
 }
 
-
 footer {
     text-align: center;
     margin-top: var(--spacing-lg);
@@ -230,48 +185,31 @@ footer {
     letter-spacing: 0.05em;
     color: var(--text-secondary);
     margin: 1.5rem 0 0.5rem 0;
+    font-weight: 600;
 }
 
 .group-title:first-child {
     margin-top: 0;
 }
 
-/* Theme Switcher Stylings */
-.theme-switch-container {
-    position: absolute;
-    top: 1rem;
-    right: 1rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-@media (max-width: 768px) {
-    .theme-switch-container {
-        position: static;
-        justify-content: center;
-        margin-bottom: 1rem;
-    }
-}
-
 /* New Stats Columns */
 .stats-columns {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 1rem;
     margin-top: 1rem;
 }
 
 .stat-column {
     background-color: var(--bg-color);
-    padding: 1rem;
+    padding: 0.75rem;
     border-radius: var(--border-radius);
     border: 1px solid var(--accent-color);
 }
 
 .stat-column.current {
     border-color: var(--highlight-color);
-    background-color: rgba(233, 69, 96, 0.05); /* Subtle tint of highlight */
+    background-color: rgba(233, 69, 96, 0.05);
 }
 
 .stat-column h3 {
@@ -281,6 +219,7 @@ footer {
     padding-bottom: 0.5rem;
     margin-bottom: 0.75rem;
     text-align: center;
+    font-weight: 600;
 }
 
 .stat-row {
@@ -295,7 +234,7 @@ footer {
     margin-top: 0.75rem;
     border-top: 1px dashed var(--accent-color);
     padding-top: 0.5rem;
-    font-weight: bold;
+    font-weight: 600;
 }
 
 .stat-row .label {
@@ -304,7 +243,12 @@ footer {
 
 .stat-row .value {
     color: var(--text-primary);
-    font-weight: bold;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.target-range .stat-row .value {
+    font-size: 0.85rem;
 }
 
 .stat-row .value.highlight {
