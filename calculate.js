@@ -119,11 +119,13 @@ function renderConfirguration() {
     document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
         checkbox.addEventListener('change', handleCheckboxChange);
         
-        // Add hover listeners for preview
+        // Add hover and focus listeners for preview (mouse + keyboard)
         const wrapper = checkbox.closest('.checkbox-wrapper');
         if (wrapper) {
             wrapper.addEventListener('mouseenter', () => handleMouseEnter(checkbox, wrapper));
             wrapper.addEventListener('mouseleave', () => handleMouseLeave(wrapper));
+            checkbox.addEventListener('focus', () => handleMouseEnter(checkbox, wrapper));
+            checkbox.addEventListener('blur', () => handleMouseLeave(wrapper));
         }
     });
 }
@@ -234,7 +236,8 @@ function calculate() {
 
 function updateUI(stats) {
     // --- Column 1: Current Stats ---
-    document.getElementById('current-cast-time').textContent = `${round(stats.currentCastTime, 3)}s`;
+    const castTimeText = `${round(stats.currentCastTime, 3)}s`;
+    document.getElementById('current-cast-time').textContent = castTimeText;
     document.getElementById('current-haste-percent').textContent = `${round(stats.hasteRatingPercent * 100, 2)}%`;
     document.getElementById('current-haste-rating').textContent = Math.ceil(stats.totalHasteRating);
     document.getElementById('current-gcd').textContent = `${round(Math.max(1.0, 1.5 / stats.totalCastingSpeed), 3)}s`;
@@ -242,8 +245,15 @@ function updateUI(stats) {
     // --- Target Range (1.0s - 0.96s) ---
     const targetMin = calculateTarget(state.castTime, 1.0, stats.castingSpeedMultiplier); // 1.0s (Floor/Slowest end of range)
     const targetMax = calculateTarget(state.castTime, state.targetCastTime, stats.castingSpeedMultiplier); // 0.96s (Ceiling/Fastest end of range)
-    
+
     updateRangeColumn(targetMin, targetMax, stats.totalHasteRating);
+
+    // Update screen-reader live region with key results
+    const summary = document.getElementById('results-summary');
+    if (summary) {
+        const needed = document.getElementById('target-needed').textContent;
+        summary.textContent = `Cast time ${castTimeText}. Haste needed: ${needed}.`;
+    }
 }
 
 function calculateTarget(baseCastTime, targetTime, buffMultiplier) {
