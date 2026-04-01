@@ -270,11 +270,11 @@ function calculateTarget(baseCastTime, targetTime, buffMultiplier) {
 }
 
 function updateRangeColumn(targetMin, targetMax, currentRating) {
-    const minRating = Math.ceil(targetMin.rating);
-    const maxRating = Math.ceil(targetMax.rating);
+    const minRating = (Math.ceil(targetMin.rating) > 0) ? Math.ceil(targetMin.rating) : 0;
+    const maxRating = (Math.ceil(targetMax.rating) > 0) ? Math.ceil(targetMax.rating) : 0;
     
-    const minPercent = round(targetMin.percent * 100, 2);
-    const maxPercent = round(targetMax.percent * 100, 2);
+    const minPercent = (round(targetMin.percent * 100, 2) > 0) ? round(targetMin.percent * 100, 2) : 0;
+    const maxPercent = (round(targetMax.percent * 100, 2) > 0) ? round(targetMax.percent * 100, 2) : 0;
 
     // Display Ranges
     document.getElementById('target-rating-range').textContent = `${minRating} - ${maxRating}`;
